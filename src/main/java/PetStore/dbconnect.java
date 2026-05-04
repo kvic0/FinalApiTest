@@ -1,4 +1,4 @@
-package Lect19;
+package PetStore;
 
 import org.testng.annotations.Test;
 import java.sql.Connection;

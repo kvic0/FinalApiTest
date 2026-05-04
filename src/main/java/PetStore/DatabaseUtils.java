@@ -1,4 +1,4 @@
-package PetStore; // თქვენი პაკეტის სახელი
+package PetStore;
 
 import java.sql.*;
 
