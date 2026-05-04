@@ -30,7 +30,6 @@ public class SetOrder  {
                 .log().all()
                 .extract().response();
         Assert.assertEquals(response.getStatusCode(), 200);
-        //Assert.assertEquals(response.jsonPath().getInt("petId"), 0);
         Assert.assertEquals(response.jsonPath().getString("status"), "placed");
         Assert.assertTrue(response.jsonPath().getBoolean("complete"));
 

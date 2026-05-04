@@ -32,7 +32,6 @@ public class UserApiTest extends BeforeTest {
                 .extract()
                 .response();
 
-        // შემოწმება (Assertion)
         Assert.assertEquals(response.getStatusCode(), 200, "სტატუს კოდი უნდა იყოს 200");
     }
     @Test(priority = 2, dataProvider = "userData", dataProviderClass = UserDataProvider.class)
@@ -115,8 +114,6 @@ public class UserApiTest extends BeforeTest {
                 .then()
                 .log().all()
                 .extract().response();
-
-        // a. მეთოდმა დააბრუნა სტატუს კოდი 200
         Assert.assertEquals(response.getStatusCode(), 200, "Login ვერ მოხერხდა!");
         Assert.assertNotNull(response.jsonPath().getString("message"), "Message არის null!");
     }

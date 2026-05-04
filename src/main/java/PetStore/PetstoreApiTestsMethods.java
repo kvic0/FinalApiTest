@@ -24,15 +24,14 @@ public class PetstoreApiTestsMethods {
                 .post("/store/order")
                 .then()
                 .log().all()
-                .statusCode(200)
                 .extract()
                 .response();
-
+        Assert.assertEquals(response.getStatusCode(), 200);
         OrderDataLombok Response = response.as(OrderDataLombok.class);
-        Assert.assertEquals(Response.getId(), dbData.getId(), "ID არ ემთხვევა!");
-        Assert.assertEquals(Response.getPetId(), dbData.getPetId(), "PetID არ ემთხვევა!");
-        Assert.assertEquals(Response.getQuantity(), dbData.getQuantity(), "Quantity არ ემთხვევა!");
-        Assert.assertEquals(Response.getStatus(), dbData.getStatus(), "Status არ ემთხვევა!");
+        Assert.assertEquals(Response.getId(), dbData.getId(), "ID Doesn't match!");
+        Assert.assertEquals(Response.getPetId(), dbData.getPetId(), "PetID Doesn't match!");
+        Assert.assertEquals(Response.getQuantity(), dbData.getQuantity(), "Quantity Doesn't match!");
+        Assert.assertEquals(Response.getStatus(), dbData.getStatus(), "Status Doesn't match!");
     }
     @Test
     public void getOrderFromDbDataTest(int id,int exceptedStatusCode,String expectedMassage) {
@@ -54,14 +53,14 @@ public class PetstoreApiTestsMethods {
         Assert.assertEquals(response.getStatusCode(), exceptedStatusCode);
         if (exceptedStatusCode == 200) {
             OrderDataLombok Response = response.as(OrderDataLombok.class);
-            Assert.assertEquals(Response.getId(), dbData.getId(), "ID არ ემთხვევა!");
-            Assert.assertEquals(Response.getPetId(), dbData.getPetId(), "PetID არ ემთხვევა!");
-            Assert.assertEquals(Response.getQuantity(), dbData.getQuantity(), "Quantity არ ემთხვევა!");
-            Assert.assertEquals(Response.getStatus(), dbData.getStatus(), "Status არ ემთხვევა!");
+            Assert.assertEquals(Response.getId(), dbData.getId(), "ID Doesn't match!");
+            Assert.assertEquals(Response.getPetId(), dbData.getPetId(), "PetID Doesn't match!");
+            Assert.assertEquals(Response.getQuantity(), dbData.getQuantity(), "Quantity Doesn't match!");
+            Assert.assertEquals(Response.getStatus(), dbData.getStatus(), "Status Doesn't match!");
 
         }
         else {
-            Assert.assertEquals(response.jsonPath().getString("message"), expectedMassage,"პასუხი არ შეიცავს სწორ შეტყობინებას");
+            Assert.assertEquals(response.jsonPath().getString("message"), expectedMassage,"Message is incorrect!");
 
         }
 
@@ -83,7 +82,7 @@ public class PetstoreApiTestsMethods {
                 .response();
         Assert.assertEquals(response.getStatusCode(), expectedStatuseCode);
         if(expectedMessage != null) {
-            Assert.assertEquals(response.jsonPath().getString("message"), expectedMessage,"პასუხი არ შეიცავს სწორ შეტყობინებას");
+            Assert.assertEquals(response.jsonPath().getString("message"), expectedMessage,"Message is incorrect!");
         }
     }
 
