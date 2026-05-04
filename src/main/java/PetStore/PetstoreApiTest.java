@@ -6,7 +6,6 @@ public class PetstoreApiTest {
     public int ID =1;
     PetstoreApiTestsMethods petstoreApiTests = new PetstoreApiTestsMethods();
     @Test(priority = 1,description = "PetStore Create order from DB")
-    @io.qameta.allure.Step("Creating order for ID: {id}")
     public void createOrder(){
         petstoreApiTests.createOrderFromDbDataTest(ID);
     }
